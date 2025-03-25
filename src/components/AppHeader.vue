@@ -31,11 +31,11 @@
     }
 
     .logout-button {
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
         background-color: #ff4949;
         color: white;
-        border: none;
-        padding: 5px 10px;
-        border-radius: 4px;
         cursor: pointer;
     }
 </style>

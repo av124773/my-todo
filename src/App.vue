@@ -7,23 +7,40 @@
       :user="user"
       @logout="logout"
     />
+
+    <TodoForm 
+      v-model="newTodo"
+      @add-todo="addTodo"
+      ref="todoFormRef"
+    />
   </div>
 </template>
 
 <script>
 import { ref } from 'vue';
 import AppHeader from './components/AppHeader.vue';
+import TodoForm from './components/TodoForm.vue';
+import { useTodos } from './composables/useTodos';
 
 export default {
   name: 'App',
   components: {
-    AppHeader
+    AppHeader,
+    TodoForm
   },
   setup() {
+    const todoFormRef = ref(null)
+
     const user = ref({
       name: '測試用戶',
       level: '一般會員'
     })
+
+    const {
+      newTodo,
+      todos,
+      addTodo
+    } = useTodos()
 
     function logout() {
       alert('登出(展示用)')
@@ -31,7 +48,10 @@ export default {
 
     return {
       user,
-      logout
+      newTodo,
+      todos,
+      logout,
+      addTodo
     }
   }
 };
